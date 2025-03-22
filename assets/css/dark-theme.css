@@ -1,0 +1,561 @@
+/* Dark Mode Theme Variables */
+:root {
+    /* Light mode variables (default) */
+    --background-main: #ffffff;
+    --background-secondary: var(--ghost-white);
+    --text-primary: var(--raisin-black-1);
+    --text-secondary: var(--slate-gray);
+    --card-bg: var(--white);
+    --header-bg: var(--white);
+    --shadow-color: hsla(223, 40%, 76%, 0.3);
+    --border-color: var(--gainsboro);
+  }
+  
+  /* Dark mode variables */
+  body:not(.light-mode) {
+    --background-main: #0c0d21;
+    --background-secondary: #131633;
+    --text-primary: #ffffff;
+    --text-secondary: #b4b7c5;
+    --card-bg: #1a1b41;
+    --header-bg: transparent;
+    --shadow-color: hsla(223, 40%, 10%, 0.5);
+    --border-color: #2a2c54;
+  }
+  
+  /* Apply theme colors to elements */
+  body {
+    background-color: var(--background-main);
+    color: var(--text-secondary);
+  }
+  
+  .h1, .h2, .h3, .card-title {
+    color: var(--text-primary);
+  }
+  
+  .service, .project, .blog {
+    background-color: var(--background-secondary);
+  }
+  
+  .service-card, 
+  .blog-card, 
+  .newsletter-form,
+  .filter-btn.active {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 15px var(--shadow-color);
+  }
+  
+  .filter-btn.active {
+    color: var(--text-primary);
+  }
+  
+  .header.active {
+    background-color: var(--header-bg);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  body:not(.light-mode) .header.active {
+    backdrop-filter: blur(10px);
+    background-color: rgba(12, 13, 33, 0.85);
+  }
+  
+  /* Theme-specific designs */
+  
+  /* DARK THEME (Default) - Starry Sky */
+  /* Enhanced Stars Animation */
+  .starry-background {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(1px 1px at 5% 15%, white 100%, transparent),
+      radial-gradient(1px 1px at 15% 30%, white 100%, transparent),
+      radial-gradient(2px 2px at 25% 10%, white 100%, transparent),
+      radial-gradient(1px 1px at 35% 45%, #e3e3e3 100%, transparent),
+      radial-gradient(1px 1px at 45% 25%, white 100%, transparent),
+      radial-gradient(1px 1px at 55% 65%, #e3e3e3 100%, transparent),
+      radial-gradient(2px 2px at 65% 5%, white 100%, transparent),
+      radial-gradient(1px 1px at 75% 35%, white 100%, transparent),
+      radial-gradient(1px 1px at 85% 25%, #e3e3e3 100%, transparent),
+      radial-gradient(2px 2px at 95% 55%, white 100%, transparent);
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    opacity: 0.8;
+  }
+  
+  .twinkle-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .twinkle-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: white;
+    animation: twinkle 4s infinite ease-in-out;
+  }
+  
+  .twinkle-star:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+  }
+  
+  .twinkle-star:nth-child(2) {
+    top: 35%;
+    left: 55%;
+    animation-delay: 1s;
+  }
+  
+  .twinkle-star:nth-child(3) {
+    top: 60%;
+    left: 25%;
+    animation-delay: 2s;
+  }
+  
+  .twinkle-star:nth-child(4) {
+    top: 15%;
+    left: 80%;
+    animation-delay: 3s;
+  }
+  
+  .twinkle-star:nth-child(5) {
+    top: 75%;
+    left: 85%;
+    animation-delay: 2.5s;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.5);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+  }
+  
+  /* Multiple shooting stars */
+  .shooting-star {
+    position: absolute;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(
+      to right, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.5) 50%, 
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(100, 227, 255, 0.7);
+    animation: shootingStar 6s linear infinite;
+  }
+  
+  .shooting-star:nth-child(1) {
+    top: 15%;
+    left: -100px;
+    animation-delay: 0s;
+    transform: rotate(-15deg);
+  }
+  
+  .shooting-star:nth-child(2) {
+    top: 40%;
+    left: -100px;
+    animation-delay: 3s;
+    transform: rotate(-25deg);
+  }
+  
+  @keyframes shootingStar {
+    0% {
+      opacity: 0;
+      transform-origin: left;
+      transform: translateX(0) translateY(0) rotate(-15deg) scale(0.5);
+    }
+    5% {
+      opacity: 1;
+    }
+    20% {
+      transform-origin: left;
+      transform: translateX(30vw) translateY(5vh) rotate(-15deg) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100vw) translateY(20vh) rotate(-15deg) scale(0.2);
+    }
+  }
+  
+  /* Satellite */
+  .satellite {
+    position: absolute;
+    top: 30%;
+    left: -20px;
+    width: 5px;
+    height: 5px;
+    background-color: #aaa;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #64e3ff;
+    animation: satellite 25s linear infinite;
+    opacity: 0.8;
+  }
+  
+  .satellite-trail {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 15px;
+    height: 1px;
+    background: linear-gradient(to left, rgba(100, 227, 255, 0.7), transparent);
+    transform: translateY(-50%);
+  }
+  
+  @keyframes satellite {
+    0% {
+      opacity: 0;
+      transform: translateX(0) translateY(0);
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(calc(100vw + 50px)) translateY(50px);
+    }
+  }
+  
+  /* Light Mode Styles */
+  body.light-mode {
+    --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Hide space elements in light mode */
+  body.light-mode .stars-container,
+  body.light-mode .stars,
+  body.light-mode .twinkle-stars,
+  body.light-mode .shooting-star,
+  body.light-mode .satellite {
+    display: none;
+  }
+  
+  /* Apply different styling to service categories in dark mode */
+  body:not(.light-mode) .service-category {
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  body:not(.light-mode) .category-title {
+    color: var(--text-primary);
+  }
+  
+  body:not(.light-mode) .service-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+  }
+  
+  /* Footer in dark mode */
+  body:not(.light-mode) .footer {
+    background-color: #080918;
+  }
+  
+  body:not(.light-mode) .footer-bottom {
+    border-block-start: 1px solid #1a1b41;
+  }
+  
+  /* Improve card visuals in dark mode */
+  body:not(.light-mode) .blog-card.large {
+    border-inline-end: 1px solid var(--border-color);
+  }
+  
+  body:not(.light-mode) .feature-card .card-text,
+  body:not(.light-mode) .blog-card .card-text {
+    color: var(--text-secondary);
+  }
+  
+  /* Newsletter section in dark mode */
+  body:not(.light-mode) .newsletter {
+    background-image: linear-gradient(rgba(12, 13, 33, 0.9), rgba(12, 13, 33, 0.9)), url('./assets/images/newsletter-bg.jpg');
+  }
+  
+  body:not(.light-mode) .email-field {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+  }
+  
+  /* Hero section specific styling for dark mode */
+  body:not(.light-mode) .hero {
+    background: linear-gradient(to bottom, #0c0d21, #131633);
+    position: relative;
+    color: var(--text-primary);
+  }
+  
+  body:not(.light-mode) .hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 30%, rgba(41, 46, 101, 0.5), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  body:not(.light-mode) .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  body:not(.light-mode) .hero-title,
+  body:not(.light-mode) .hero-text {
+    color: var(--text-primary);
+  }
+  
+  body:not(.light-mode) .hero-text {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  body:not(.light-mode) .hero-btn {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  body:not(.light-mode) .hero-btn:hover {
+    color: var(--majorelle-blue);
+  }
+  
+  /* Make social links more visible in dark mode */
+  body:not(.light-mode) .hero .social-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  body:not(.light-mode) .hero .social-link:hover {
+    background-color: var(--color);
+    border-color: var(--color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Original gradient for light mode */
+  body.light-mode .hero {
+    background-image: linear-gradient(to right, var(--white) 79%, var(--mustard) 79%);
+  }
+  
+  /* Adjust the hero banner in dark mode */
+  body:not(.light-mode) .hero-banner img {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  }
+  
+  /* Project section styling for dark mode */
+  body:not(.light-mode) .project {
+    background: linear-gradient(to bottom, #0c0d21, #131633);
+  }
+  
+  /* Fix filter buttons in dark mode */
+  body:not(.light-mode) .filter-btn {
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  body:not(.light-mode) .filter-btn:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  body:not(.light-mode) .filter-btn.active {
+    background-color: var(--majorelle-blue);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(100, 91, 255, 0.3);
+  }
+  
+  /* Project card content in dark mode */
+  body:not(.light-mode) .project-card .card-content {
+    background-color: rgba(30, 31, 74, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  body:not(.light-mode) .project-card .card-title {
+    color: #ffffff;
+  }
+  
+  body:not(.light-mode) .project-card .card-tag {
+    color: var(--majorelle-blue);
+    background-color: rgba(100, 91, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+  
+  /* Add a subtle hover effect for project cards in dark mode */
+  body:not(.light-mode) .project-card:hover .card-content {
+    background-color: rgba(41, 42, 92, 0.95);
+    transform: translateY(-52%);
+  }
+  
+  /* Ensure section title and subtitle are visible */
+  body:not(.light-mode) .project .section-title,
+  body:not(.light-mode) .project .section-subtitle {
+    color: #ffffff;
+  }
+  
+  body:not(.light-mode) .project .section-subtitle::before {
+    background-color: var(--majorelle-blue);
+  }
+  
+  /* Enhance the has-before span for better visibility */
+  body:not(.light-mode) .project .has-before::before {
+    background-color: var(--majorelle-blue);
+    opacity: 0.7;
+  }
+  
+  /* Add glow effect to project cards in dark mode */
+  body:not(.light-mode) .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  body:not(.light-mode) .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(41, 42, 92, 0.5);
+  }
+  
+  body:not(.light-mode) .project-card:hover .card-banner img {
+    filter: brightness(0.8) contrast(1.1);
+  }
+  
+  /* Project section title enhancement */
+  body:not(.light-mode) .project .section-title {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  body:not(.light-mode) .project .section-title .has-before {
+    position: relative;
+    z-index: 1;
+  }
+  
+  body:not(.light-mode) .project .section-title .has-before::before {
+    height: 8px;
+    background-color: rgba(100, 91, 255, 0.5);
+    z-index: -1;
+    bottom: 6px;
+  }
+  
+  /* Feature section in dark mode */
+  body:not(.light-mode) .feature {
+    background: linear-gradient(to top, #0c0d21, #131633);
+  }
+  
+  body:not(.light-mode) .feature-card .card-icon {
+    background-color: rgba(100, 91, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  body:not(.light-mode) .feature-card:hover .card-icon {
+    box-shadow: 0 0 20px hsla(var(--color), 0.5);
+    transform: scale(1.05);
+  }
+  
+  /* Blog section in dark mode */
+  body:not(.light-mode) .blog {
+    background: linear-gradient(to top, #0c0d21, #131633);
+  }
+  
+  body:not(.light-mode) .blog-card .tag {
+    color: var(--majorelle-blue);
+  }
+  
+  body:not(.light-mode) .blog-card .publish-date {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  body:not(.light-mode) .blog-card .publish-date:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Nav menu in dark mode */
+  body:not(.light-mode) .navbar {
+    background-color: #0c0d21;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  body:not(.light-mode) .navbar-link {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  body:not(.light-mode) .navbar-link:hover {
+    color: var(--majorelle-blue);
+  }
+  
+  /* Theme toggle styles - ensure proper visibility */
+  body:not(.light-mode) .theme-toggle-label {
+    background: linear-gradient(45deg, #2b3151, #141852);
+  }
+  
+  body:not(.light-mode) .theme-toggle-label:before {
+    opacity: 0.4;
+  }
+  
+  body.light-mode .theme-toggle-label {
+    background: linear-gradient(45deg, #ff9500, #ffcc00);
+  }
+  
+  /* Apply a gentle glow to active elements in dark mode */
+  body:not(.light-mode) .btn:hover,
+  body:not(.light-mode) .social-link:hover,
+  body:not(.light-mode) .back-top-btn {
+    box-shadow: 0 5px 15px rgba(100, 91, 255, 0.3);
+  }
+  
+  /* Adjust form elements in dark mode */
+  body:not(.light-mode) input,
+  body:not(.light-mode) textarea,
+  body:not(.light-mode) select {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+  }
+  
+  body:not(.light-mode) input:focus,
+  body:not(.light-mode) textarea:focus,
+  body:not(.light-mode) select:focus {
+    border-color: var(--majorelle-blue);
+    box-shadow: 0 0 0 2px rgba(100, 91, 255, 0.2);
+  }
+  
+  /* Adjust back-to-top button in dark mode */
+  body:not(.light-mode) .back-top-btn {
+    background-color: var(--majorelle-blue);
+  }
+  
+  body:not(.light-mode) .back-top-btn:hover {
+    background-color: #4a46ff;
+    box-shadow: 0 0 20px rgba(100, 91, 255, 0.5);
+  }
